@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurante Asiático</title>
+  <style>
+@font-face {
+  font-family: 'sakura';
+  src: url('CFGeneralTao-Regular.ttf');
+}
+    body {
+      font-family: sakura;
+      margin: 0;
+      padding: 0;
+      background-color: #FEFEE2;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #f5f5f5;
+      padding: 10px;
+      text-align: center;
+      font-family: 'sakura';
+    }
+
+    nav a {
+      color: #333;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+nav > a{
+    color: #333;
+    font-weight: 300;
+    text-decoration: none;
+    margin-right: 10px;
+    
+}
+nav > a:hover{
+    text-decoration: underline;
+	color: #7FC37E;  
+}
+    section {
+      margin: 20px;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .social-icons {
+      display: flex;
+      align-items: center;
+    }
+
+    .social-icons a {
+      color: #fff;
+      margin-left: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+    .carousel {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 24px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .prev {
+    left: 10px;
+  }
+
+  .next {
+    right: 10px;
+  }
+
+  .carousel-images {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .carousel-images figure {
+    margin: 0;
+    width: 100%;
+    flex-shrink: 0;
+    text-align: center;
+  }
+
+  .carousel-images img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .carousel-images figcaption {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  #inicio {
+    padding: 20px;
+    text-align: center;
+  }
+
+  #inicio h2 {
+    color: #FEFEE2;
+  }
+  #menu h2{
+    text-align: center;
+  }
+  #menu h3{
+    text-align: center;
+  }
+  #menu{
+    background-color: #7FC37E;
+  }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="registro.php">Inicio</a>
+      <a href="login.php">Menú</a>
+      <a href="registro.php">Pedidos</a>
+    </nav>
+    <img id="logo" src="sakura-garden-logo.png" alt="Logo del restaurante" height="200px">
+    <section id="inicio">
+      <h2>Bienvenido(a) a Sakura Garden</h2>
+    </section>
+  </header>
+<section id="menu">
+  <h2>Menú</h2>
+  <h3>Algunos de nuestros platos </h3>
+  <div class="carousel">
+    <button class="carousel-button prev">&#10094;</button>
+    <div class="carousel-images">
+      <figure>
+        <img src="plato1.jpg" alt="Plato 1">
+        <figcaption>SUSHI </figcaption>
+      </figure>
+      <figure>
+        <img src="plato1.jpg" alt="Plato 3">
+        <figcaption>RAMEN</figcaption>
+      </figure>
+      <figure>
+        <img src="plato1.jpg" alt="Plato 4">
+        <figcaption>TERIYAKI</figcaption>
+      </figure>
+    </div>
+    <button class="carousel-button next">&#10095;</button>
+  </div>
+
+  <h3>Algunos Postres</h3>
+  <div class="carousel">
+    <button class="carousel-button prev">&#10094;</button>
+    <div class="carousel-images">
+      <figure>
+        <img src="plato1.jpg" alt="Postre 1">
+        <figcaption>Helado de té verde</figcaption>
+      </figure>
+      <figure>
+        <img src="plato1.jpg" alt="Postre 2">
+        <figcaption>Bolas de masa dulce</figcaption>
+      </figure>
+    </div>
+    <button class="carousel-button next">&#10095;</button>
+  </div>
+</section>
+<script>
+  const carousels = document.querySelectorAll('.carousel');
+
+  carousels.forEach(carousel => {
+    const carouselImages = carousel.querySelector('.carousel-images');
+    const prevButton = carousel.querySelector('.prev');
+    const nextButton = carousel.querySelector('.next');
+    const imageWidth = carouselImages.querySelector('figure').offsetWidth;
+    let currentPosition = 0;
+
+    prevButton.addEventListener('click', () => {
+      currentPosition += imageWidth;
+      if (currentPosition > 0) {
+        currentPosition = -imageWidth * (carouselImages.children.length - 1);
+      }
+      carouselImages.style.transform = `translateX(${currentPosition}px)`;
+    });
+
+    nextButton.addEventListener('click', () => {
+      currentPosition -= imageWidth;
+      if (currentPosition < -imageWidth * (carouselImages.children.length - 1)) {
+        currentPosition = 0;
+      }
+      carouselImages.style.transform = `translateX(${currentPosition}px)`;
+    });
+  });
+</script>
+
+  <footer>
+    <div class="about-us">
+      <section id="ubicacion">
+        <h2>Ubicación</h2>
+        <p>Estamos ubicados en:</p>
+        <p>Calle Principal, 123</p>
+        <p>Ciudad, País</p>
+      </section>
+    </div>
+    <div class="contact-social">
+      <section id="contacto">
+        <h2>Contacto</h2>
+        <p>Puedes contactarnos en:</p>
+        <p>Teléfono: 666-66-666</p>
+        <p>Email: sakuragarden@gmail.com</p>
+      </section>
+    </div>
+      <div class="social-icons">
+        <p><h2>Encuentranos en:</h2></p>
+        <p><a href="#"><img src="icons8-facebook-rodeado-de-círculo.gif" alt="Facebook" width="50px"></a></p>
+        <p><a href="#"><img src="icons8-instagram.gif" alt="Instagram" width="50px"></a></p>
+        <p><a href="#"><img src="icons8-twitter.gif" alt="Twitter"></a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

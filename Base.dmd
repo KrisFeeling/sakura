@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Base" id="E9182EF0-B40B-8924-4F2F-A6B06B81706A" version="3.5">
+<createdBy>HP 2022</createdBy>
+<createdTime>2023-06-02 11:53:43 UTC</createdTime>
+<ownerDesignName>Base</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>E9182EF0-B40B-8924-4F2F-A6B06B81706A</designId>
+</OSDM_Design>
